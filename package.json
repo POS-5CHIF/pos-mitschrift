@@ -1,0 +1,14 @@
+{
+  "name": "pos-mitschrift",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "docsify serve docs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "docsify": "^4.11.3"
+  }
+}
