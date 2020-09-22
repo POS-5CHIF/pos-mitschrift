@@ -2,4 +2,4 @@
 
 - Spring
 
-  - [Spring Setup](spring_setup.md.md)
+  - [Spring Setup](content/spring_setup.md)

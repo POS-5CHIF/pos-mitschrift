@@ -1,1 +1,1 @@
-TODO:
+Siehe Sidebar für Inhalte ;)
