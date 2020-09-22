@@ -70,13 +70,15 @@ Oder mit `@Query` eigene Query
 
 ## Rest-Controller
 
+Methoden können normales Objekt (Entity) oder ResponseEntity zurückgeben. Bei ersterem wrappt der Zentrale Controller das Objekt in ein ResponseEntity.
+
 ```java
 @RestController
 public class AppController {
     // final
     private final MitarbeiterRepository mitarbeiterRepository;
 
-    // Constructor-Injection
+    // Constructor Autowiring
     public AppController(MitarbeiterRepository mitarbeiterRepository) {
         this.mitarbeiterRepository = mitarbeiterRepository
     }
@@ -85,6 +87,8 @@ public class AppController {
 ```
 
 ### GET
+
+Parameter mit `@PathVariable`
 
 ```java
 @GetMapping(path = "/employees")
@@ -95,7 +99,10 @@ public List<Mitarbeiter> getAllEmployees() {
 
 ### POST
 
-ReponseEntity erstellen die 201 CREATED returned
+ReponseEntity erstellen die 201 CREATED und Location zurückgibt
+
+`@Valid` validiert gesandtes Objekt
+Bei Fehler wird Funktion nicht aufgerufen, sondern ExceptionHandler aufgerufen
 
 ```java
 @PostMapping("/employees")
@@ -109,3 +116,20 @@ public ResponseEntity<Mitarbeiter> addMitarbeiter(@Valid @RequestBody Mitarbeite
 ```
 
 ## ExceptionHandler
+
+```java
+@ControllerAdvice
+public class AppExceptionHandler extends ResponseEntityExceptionHandler {
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleAllOtherExceptions(Exception ex, WebRequest req) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(EmployeeNotFoundException.class)
+    public ResponseEntity<String> handleEmployeeNotFoundException(EmployeeNotFoundException ex, WebRequest req) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+}
+```
+
+`handleMethodArgumentNotValid` wird aufgerufen wenn gegen `@Valid` verstoßen
