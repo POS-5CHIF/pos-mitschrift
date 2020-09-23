@@ -132,4 +132,8 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
 }
 ```
 
-`handleMethodArgumentNotValid` wird aufgerufen wenn gegen `@Valid` verstoßen
+`handleMethodArgumentNotValid` wird aufgerufen wenn in einem Rest-Controller gegen `@Valid` verstoßen wird
+
+## Testfragen
+
+Wie funktioniert ein zentraler Exceptionhandler?
