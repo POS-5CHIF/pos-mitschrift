@@ -5,4 +5,8 @@
   - [Spring Setup](content/spring_setup.md)
 
 - Python
-  - [Pandas](content/pandas.md)
+
+  - [Data Science](content/datascience.md.md)
+
+- Anderes
+  - [Testrelevantes](content/testrelevantes.md)
