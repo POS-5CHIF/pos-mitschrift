@@ -65,7 +65,7 @@ NaN durch Medianwerte ersetzen:
 
 ```python
 df.groupby('Spalte')['Age'].median()
-df.age['Age'] = df.groupby('Spalte')['Age'].apply(lambda x: x.fillna(x.median()))
+df['Age'] = df.groupby('Spalte')['Age'].apply(lambda x: x.fillna(x.median()))
 ```
 
 # Seaborn
