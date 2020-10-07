@@ -1,3 +1,7 @@
+# Jupyter
+
+`?` nach Funktion etc liefert Hilfe
+
 # Pandas
 
 ## Arten von Daten
@@ -68,8 +72,20 @@ df.groupby('Spalte')['Age'].median()
 df['Age'] = df.groupby('Spalte')['Age'].apply(lambda x: x.fillna(x.median()))
 ```
 
-# Seaborn
+# Seaborn und pyplot
 
 ```python
 sns.countplot(x='Spaltenname' df=mydataframe)
+```
+
+```python
+plt.scatter(x, y)
+```
+
+```python
+sns.regplot(x=x, y=y, data=data) # scatterplot mit Gerader, gut für lineare Regression
+```
+
+```python
+sns.regplot(x=x, y=y, data=data) # wie regplot, aber data ist pd.DataFrame
 ```
