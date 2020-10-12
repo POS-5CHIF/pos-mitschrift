@@ -30,7 +30,9 @@ Nicht nur mit Mittelwert des ganzen DF, sondern Mittelwert innerhalb von Gruppie
 Mit one hot encoding:
 
 ```python
-pd.get_dummies(series)
+col = pd.get_dummies(df['Spalte'], drop_first=True)
+df = pd.concat([df, col], axis=1)
+df.drop("Spalte", axis=1, inplace=True)
 ```
 
 ### Conditional Selection
