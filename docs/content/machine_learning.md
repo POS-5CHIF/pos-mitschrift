@@ -41,4 +41,11 @@ Korrelationskoeffizient $\rho$ (ergibt nur im Zweidimensionalen Sinn):
 - $0.8 < |\rho| < 1$: Punkte liegen "gut auf der Linie"
 - $|\rho| = 0$: kein "Zusammenhang" zwischen den Lagen der Punkte
 
-Bei gaußscher Glockekurve ist Distanz zwischen Scheitel der Kurve und Wendepunkte die Standardabweichung -> grafisch ablesbar!
+Bei gaußscher Glockenkurve ist Distanz zwischen Scheitel der Kurve und Wendepunkte die Standardabweichung -> grafisch ablesbar!
+
+# Logistische Regression
+
+- binäre Klassifizierung
+- zuerst lineare Regression, darauf dann Sigmoid
+- bei sklearn kann solver angegeben werden
+  - `liblinear` reicht für uns
