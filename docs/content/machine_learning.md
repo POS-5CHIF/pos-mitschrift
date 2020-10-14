@@ -1,5 +1,7 @@
 # Lineare Regression
 
+- Für Berechnung von kontinuierlichen Werten
+
 einziger Eingangsparameter ist Intercept falls dieser bekannt ist
 
 $\widehat{y}$ ist geschätzter Wert
@@ -14,12 +16,16 @@ Gradientenabstiegsverfahren (Gradient Descent) zur Fehlerminimierung
 
 ```python
 from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(df[["Height"]], df[["Weight"]],
+test_size=0.2, random_state=0)
 
 model = LinearRegression()
-model.fit(X,y) # trainiert Modell
+model.fit(X_train,y_train) # trainiert Modell
 print(model.coef_, model.intercept_) # Koeffizienten sind m1, m2 etc, Intercept ist b
 predictions = model.predict(X_test)
-model.score() # Testen des Modells
+model.score(X_test, y_test) # Testen des models
 ```
 
 score (0-1) bei zB Klassifizierung einfacher zu verstehen als bei linearer Regression
@@ -47,5 +53,22 @@ Bei gaußscher Glockenkurve ist Distanz zwischen Scheitel der Kurve und Wendepun
 
 - binäre Klassifizierung
 - zuerst lineare Regression, darauf dann Sigmoid
-- bei sklearn kann solver angegeben werden
-  - `liblinear` reicht für uns
+- `liblinear` für binäre Klassifizierung
+- `newton-cg` für nicht-binäre Klassifizierung
+
+```python
+# ...
+model = LogisticRegression(solver='liblinear')
+# ...
+```
+
+# Confusion Matrix
+
+```python
+from sklearn.metrics import confusion_metrics
+confusion_matrx(y_test, predictions)
+```
+
+# Grid Search
+
+- Optimierung eines Modells durch Variieren der Hyperparameter
