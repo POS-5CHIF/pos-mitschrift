@@ -66,9 +66,30 @@ model = LogisticRegression(solver='liblinear')
 
 ```python
 from sklearn.metrics import confusion_metrics
-confusion_matrx(y_test, predictions)
+confusion_matrix(y_test, predictions)
 ```
 
 # Grid Search
 
-- Optimierung eines Modells durch Variieren der Hyperparameter
+- Optimierung eines Modells durch Variation der Hyperparameter
+
+# KNN
+
+- sehr langsam
+- leicht zu verstehen
+
+## Eingangswerte skalieren
+
+```python
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+sc.fit(transform(X_train))
+sc.transform(X_test)
+```
+
+Berechnung erfolgt intern: $\frac{x-mean(x)}{std(x)}$
+
+# Naive Bayes
+
+- setzt voraus dass Features unabhängig ist, da er einfach Multiplikationssatz verwendet
+- muss nicht skaliert werden, da er sowieso Mittelwert und std verwendet
