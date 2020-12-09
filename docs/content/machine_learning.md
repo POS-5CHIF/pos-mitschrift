@@ -87,9 +87,46 @@ sc.fit(transform(X_train))
 sc.transform(X_test)
 ```
 
-Berechnung erfolgt intern: $\frac{x-mean(x)}{std(x)}$
+Berechnung erfolgt intern mit: $\frac{x-mean(x)}{std(x)}$
 
 # Naive Bayes
 
-- setzt voraus dass Features unabhängig ist, da er einfach Multiplikationssatz verwendet
+- setzt voraus dass Features unabhängig sind (von da kommt "Naive" im Namen), da er einfach Multiplikationssatz verwendet
+  - ginge anders auch, aber so is es viel schneller
+  - idR sind diese in der Realität aber gar nicht von einander unabhängig
 - muss nicht skaliert werden, da er sowieso Mittelwert und std verwendet
+- auch mit vielen Features performant
+- Features müssen nicht skaliert werden
+- viel schneller als KNN
+
+## Gaussian Bayes
+
+- verwendet Gaußsche Glockenkurve und Normalverteilung um Wahrscheinlichkeiten zu berechnen
+- bei möglichst normalverteilten Features
+- `GaussianNB` in sklearn
+
+## Multinomialer Bayes
+
+# Beispiel Spam-Filter
+
+- einzelne Wörter sind einzelne Features
+
+```python
+from sklearn.feature_extraction.text import CountVectorizer
+
+cv = CountVectorizer()
+X_train = cv.fit_transform(X_train)
+X_test = cv.transform(X_test)
+```
+
+# Support Vector Machine
+
+- möglichst viel Abstand zwischen zu klassifizierenden Kategorien (-> **large margin classifier**)
+  - dazu werden Stützvektoren verwendet -> daher Name
+- erstellt zusätzliche Axen (mehr Axen als Features) zur Klassisiziferung
+- Daten skalieren!
+- Kernel legt internen Algorithmus fest
+
+```python
+from sklearn.svm import SVC
+```
