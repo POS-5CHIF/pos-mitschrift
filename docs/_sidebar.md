@@ -12,4 +12,5 @@
   - [Machine Learning](content/machine_learning.md)
 
 - Anderes
+  - [Gängige Fehler](content/gaengige_fehler.md)
   - [Testrelevantes](content/testrelevantes.md)
